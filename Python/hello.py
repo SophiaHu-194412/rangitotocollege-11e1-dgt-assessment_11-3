@@ -41,3 +41,13 @@ w.pack()
 w = Scale(root, from_=0, to=200, orient=HORIZONTAL)
 w.pack()
 root.mainloop()
+
+word = 'peace'
+
+try = 5
+while try > 0:
+    letter = input()
+    if letter in word:
+        print('correct')
+    else:
+        try -= 1
