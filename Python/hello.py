@@ -1,42 +1,95 @@
-from pydoc import text
+'''hangman'''
 from tkinter import * 
 import random
+
 root = Tk()
-menu = Menu(root)
-root.config(menu=menu)
-filemenu = Menu(menu)
+btn = Button(root, text='Play Hangman', command=root.quit)
+btn.pack(pady=20)
+btn2 = Button(root, text='A', command=root.quit)
+btn2.pack(pady=5)
+btn3 = Button(root, text='B', command=root.quit)
+btn3.pack(pady=5)
+btn4 = Button(root, text='C', command=root.quit)
+btn4.pack(pady=5)
+btn5 = Button(root, text='D', command=root.quit)
+btn5.pack(pady=5)
+btn6 = Button(root, text='E', command=root.quit)
+btn6.pack(pady=5)
+btn7 = Button(root, text='F', command=root.quit)
+btn7.pack(pady=5)
+btn8 = Button(root, text='G', command=root.quit)
+btn8.pack(pady=5)
+btn9 = Button(root, text='H', command=root.quit)
+btn9.pack(pady=5)
+btn10 = Button(root, text='I', command=root.quit)
+btn10.pack(pady=5)
+btn11 = Button(root, text='J', command=root.quit)
+btn11.pack(pady=5)
+btn12 = Button(root, text='K', command=root.quit)
+btn12.pack(pady=5)
+btn13 = Button(root, text='L', command=root.quit)
+btn13.pack(pady=5)
+btn14 = Button(root, text='M', command=root.quit)
+btn14.pack(pady=5)
+btn15 = Button(root, text='N', command=root.quit)
+btn15.pack(pady=5)
+btn16 = Button(root, text='O', command=root.quit)
+btn16.pack(pady=5)
+btn17 = Button(root, text='P', command=root.quit)
+btn17.pack(pady=5)
+btn18 = Button(root, text='Q', command=root.quit)
+btn18.pack(pady=5)
+btn19 = Button(root, text='R', command=root.quit)
+btn19.pack(pady=5)
+btn20 = Button(root, text='S', command=root.quit)
+btn20.pack(pady=5)
+btn21 = Button(root, text='T', command=root.quit)
+btn21.pack(pady=5)
+btn22 = Button(root, text='U', command=root.quit)
+btn22.pack(pady=5)
+btn23 = Button(root, text='V', command=root.quit)
+btn23.pack(pady=5)
+btn24 = Button(root, text='W', command=root.quit)
+btn24.pack(pady=5)
+btn25 = Button(root, text='X', command=root.quit)
+btn25.pack(pady=5)
+btn26 = Button(root, text='Y', command=root.quit)
+btn26.pack(pady=5)
+btn27 = Button(root, text='Z', command=root.quit)
+btn27.pack(pady=5)
+root.mainloop()
 
-numbers_list = [1234, 2345, 3456, 4567, 5678, 6789, 7890, 8901, 9012, 1357, 2468, 3690, 1470, 2580, 3691, 4701, 5812, 6923, 7034, 8145, 9256,
-                1023, 2134, 3245, 4356, 5467, 6578, 7689, 8790, 9801, 1593, 2684, 3775, 4866, 5957, 6048, 7139, 8220, 9311, 1402, 2513, 3624,
-                4735, 5846, 6957, 7068, 8179, 9280, 1204, 2315, 3426, 4537, 5648, 6759, 7860, 8971, 9082, 1304, 2415, 3526, 4637, 5748,
-                6859, 7960, 8071, 9182, 1405, 2516, 3627, 4738, 5849, 6950, 7061, 8172, 9283, 1205, 2316, 3427, 4538, 5649, 6750, 7861, 
-                8972, 9083, 1305, 2416, 3527, 4638, 5749, 6850, 7961, 8072, 9183, 1406, 2517, 3628, 4739, 5840, 6951, 7062, 8173, 9284, 
-                1206, 2317, 3428, 4539, 5640, 6751, 7862, 8973, 9084, 1306, 2417, 3528, 4639, 5740, 6851, 7962, 8073, 9184, 1407,
-                2518, 3629, 4730, 5841, 6952, 7063, 8174, 9285, 1207, 2318, 3429, 4530, 5641, 6752, 7863, 8974, 9085, 1307, 2418, 3529,
-                4630, 5741, 6852, 7963, 8074, 9185, 1408, 2519, 3620, 4731, 5842, 6953, 7064, 8175, 9286, 1208, 2319, 3420, 4531, 5642,
-                6753, 7864, 8975, 9086, 1308, 2419, 3520, 4631, 5742, 6853, 7964, 8075, 9186, 1409, 2510, 3621, 4732, 5843, 6954, 7065, 8176, 9287]
-randnum = random.choice(numbers_list)
-pork = Label(root, text=randnum)
-pork.pack()
-
-fries = 3
-answer = str(randnum)
-beef = list(answer)
-print(beef)
-A = 0
-B = 0
-while fries > 0:
-    number = input("Enter your number: ")
-    normal = str(number).split()
-    for netro in normal:
-        if netro in beef:
-            A += 1
-        else:
-            continue
-        print(f"{A} A")
-
-    fries -= 1
-
-
+word_list = ['python', 'java', 'kotlin', 'javascript']
+chosen_word = random.choice(word_list)
+display_word = '_' * len(chosen_word)
+print("H A N G M A N")
+lives = 7
+while lives > 0:
+    print()
+    print(display_word)
+    guess = input("Input a letter: ")
+    if len(guess) != 1:
+        print("You should input a single letter")
+        continue
+    if not guess.islower():
+        print("Please enter a lowercase English letter")
+        continue
+    if guess in display_word:
+        print("You've already guessed this letter")
+        continue
+    if guess in chosen_word:
+        new_display = ''
+        for i in range(len(chosen_word)):
+            if chosen_word[i] == guess:
+                new_display += guess
+            else:
+                new_display += display_word[i]
+        display_word = new_display
+    else:
+        print("That letter doesn't appear in the word")
+        lives -= 1
+    if display_word == chosen_word:
+        print(f"You guessed the word {chosen_word}!\nYou survived!")
+        break
 
 root.mainloop()
