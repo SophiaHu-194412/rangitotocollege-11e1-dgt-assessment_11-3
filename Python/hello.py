@@ -82,4 +82,30 @@ while lives > 0:
 if lives == 0:
     print('You lose!')
 
+'''1A2B'''
+import random
+def generate_number():
+    digits = list('0123456789')
+    random.shuffle(digits)
+    return ''.join(digits[:4])
+
+number_to_guess = generate_number()
+attempts = 0
+while True:
+    attempts += 1
+    guess = input("Enter your guess: ")
+    if guess.lower() == 'exit':
+        print(f"The number was {number_to_guess}. Thanks for playing!")
+        break
+    if len(guess) != 4 or not guess.isdigit():
+        print("Please enter a valid 4-digit number.")
+        continue
+    A = sum(1 for i in range(4) if guess[i] == number_to_guess[i])
+    B = sum(1 for digit in guess if digit in number_to_guess) - A
+    print(f"{A}A{B}B")
+    if A == 4:
+        print(f"Congratulations! You've guessed the number {number_to_guess} in {attempts} attempts.")
+        break
+
+
 root.mainloop()
