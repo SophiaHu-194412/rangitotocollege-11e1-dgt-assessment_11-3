@@ -11,6 +11,7 @@ T = Text(window, height = 10, width = 30)
 T.pack()
 T.insert(tk.END, "Welcome to Hangman! Type 'exit' to quit anytime.\n")
 
+'''hangman game logic'''
 word_list = ['python', 'java', 'kotlin', 'javascript']
 chosen_word = random.choice(word_list)
 display_word = '_' * len(chosen_word)
@@ -49,6 +50,7 @@ if lives == 0:
 
 window.mainloop()
 
+'''1A2B'''
 
 root = tk.Tk()
 root.title("1A2B")
@@ -56,8 +58,7 @@ btn = tk.Button(root, text='Play 1A2B', command=root.quit)
 btn.pack(pady=20)
 
 
-'''1A2B'''
-import random
+'''1A2B game logic'''
 
 for i in range(5):
     w = Canvas(root, width=40, height=20)
@@ -94,34 +95,60 @@ while True:
         text1.insert(tk.END, f"\nCongratulations! You've guessed the number {number_to_guess} in {attempts} attempts.")
         break
 
-
 root.mainloop()
 
+'''sudoku'''
 sudoku = tk.Tk()
 sudoku.title("Sudoku")
 btn = tk.Button(sudoku, text='Play Sudoku', command=sudoku.quit)
 btn.pack(pady=20)
+
 '''sudoku'''
+# create a 9x9 grid
+sudoku.frame = Frame(sudoku, padx=10, pady=10, borderwidth=2)
+sudoku.frame.pack()
+for row in range(9):
+    for col in range(9):
+        sudoku_widget = tk.Entry(sudoku.frame, width=2, font=('Arial', 24), justify='center')
+        sudoku_widget.grid(row=row, column=col, padx=5, pady=5)
+
+for i in range(9):
+    sudoku.frame.grid_rowconfigure(i, weight=1)
+    sudoku.frame.grid_columnconfigure(i, weight=1)
+
 # create 10 buttons in a grid
 button1 = tk.Button(sudoku, text='1')
 button2 = tk.Button(sudoku, text='2')
 button3 = tk.Button(sudoku, text='3')
+button4 = tk.Button(sudoku, text='4')
+button5 = tk.Button(sudoku, text='5') 
+button6 = tk.Button(sudoku, text='6')
+button7 = tk.Button(sudoku, text='7')
+button8 = tk.Button(sudoku, text='8')
+button9 = tk.Button(sudoku, text='9')
+button10 = tk.Button(sudoku, text='0')
 
 # grid buttons vertically
 button1.pack()
 button2.pack()
 button3.pack()
+button4.pack()
+button5.pack()
+button6.pack()
+button7.pack()
+button8.pack()
+button9.pack()
+button10.pack()
 
 sudoku.mainloop()
 
+'''wordle'''
 wordle = tk.Tk()
 wordle.title("Wordle")
 btn = tk.Button(wordle, text='Play Wordle', command=wordle.quit)
 btn.pack(pady=20)
 
-
-
-'''wordle'''
+'''wordle game logic'''
 import random
 wordleguesses = 6
 wordlewordlist = ['apple', 'grape', 'peach', 'berry', 'mango']
@@ -149,6 +176,9 @@ while wordleguesses > 0:
     text2.insert(tk.END, f"\n{guess} -> {feedback}")
     wordleguesses -= 1
     if guess == wordlechosen:
-        text3.insert(tk.END, f"\nCongratulations! You've guessed the word {wordlechosen}.")
+        text2.insert(tk.END, f"\nCongratulations! You've guessed the word {wordlechosen}.")
         break
-wordle.mainloop()ot.mainloop()
+wordle_window.mainloop()
+
+menu.mainloop()
+
