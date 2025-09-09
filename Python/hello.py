@@ -2,23 +2,43 @@ from tkinter import *
 import tkinter as tk
 import random
 
-'''hangman'''
-window = tk.Tk()
-window.title("Hangman")
-btn = tk.Button(window, text='Play Hangman', command=window.quit)
-btn.pack(pady=20)
-T = Text(window, height = 10, width = 30)
-T.pack()
-T.insert(tk.END, "Welcome to Hangman! Type 'exit' to quit anytime.\n")
+'''menu'''
+(tk.Tk()).title('Game Menu')
+(tk.Tk()).geometry('500x500')
+menuLabel = tk.Label(tk.Tk(), text='Welcome to Game menu', bg='black')
+menuLabel.pack()
+entry = tk.Button(tk.Tk(), text='Play', command=(tk.Tk()).quit)
+entry.pack()
+namevar = tk.StringVar()
+def submit():
+    name=namevar.get()
 
-'''hangman game logic'''
-word_list = ['python', 'java', 'kotlin', 'javascript']
-chosen_word = random.choice(word_list)
-display_word = '_' * len(chosen_word)
+    print('The name is: ' + name)
+
+    name_var.set('')
+
+name_label = tk.Label(root, text='Username')
+name_entry = tk.Entry(root, textvariable = namevar)
+sub_btn=tk.Button(root, text='Submit, command = submit')
+
+'''hangman'''
+hangman = Toplevel()
+hangman.title('Hangman')
+hangman.geometry('500x500')
+hangmanlabel = tk.Label(hangman, text = 'Welcome to Hangman!')
+hangmanlabel.pack()
+hangmanbtn = tk.Button(hangman, text='Play', command=hangman.quit)
+hangmanbtn.pack()
+T = Text(hangman, fg='blue')
+T.pack()
+
+
+chosenword=random.choice(['apple', 'mango', 'grape', 'watermelon'])
+display_word = '_' * len(chosenword)
 lives = 7
 while lives > 0:
-    T.insert(tk.END, "\n" + display_word)
-    guess = input("Input a letter: ").lower()
+    T.insert(tk.END, '\n' + display_word)
+    guess=input("Input a letter: ").lower()
     if guess == 'exit':
         T.insert(tk.END, f'\nThe word was {chosen_word}. Thanks for playing!')
         break
@@ -44,31 +64,32 @@ while lives > 0:
         T.insert(tk.END, f"\nYou guessed the word {display_word}!\nYou win")
         break
 
-
 if lives == 0:
     T.insert(tk.END, 'You lose!')
 
-window.mainloop()
+hangman.mainloop()
+
 
 '''1A2B'''
-
-root = tk.Tk()
-root.title("1A2B")
-btn = tk.Button(root, text='Play 1A2B', command=root.quit)
-btn.pack(pady=20)
-
-
-'''1A2B game logic'''
+oneatwob = Toplevel()
+oneatwob.title('1A2B')
+oneatwob.geometry('500x500')
+oneatwoblabel = tk.Label(oneatwob, text = 'Welcome to 1A2B!')
+oneatwoblabel.pack()
+oneatwobbtn = tk.Button(oneatwob, text='play', command=oneatwob.quit)
+oneatwobbtn.pack()
+T = Text(oneatwob, fg='blue')
+T.pack()
 
 for i in range(5):
-    w = Canvas(root, width=40, height=20)
+    w = Canvas(tk.Tk(), width=40, height=20)
     w.pack()
     canvas_height=20
     canvas_width=75
     y = int(canvas_height / 2)
     w.create_line(0, y, canvas_width, y, fill="#FF0000")
 
-text1 = Text(root, height = 50, width = 30)
+text1 = Text(tk.Tk(), height = 50, width = 30)
 text1.pack()
 
 def generate_number():
@@ -95,17 +116,19 @@ while True:
         text1.insert(tk.END, f"\nCongratulations! You've guessed the number {number_to_guess} in {attempts} attempts.")
         break
 
-root.mainloop()
+oneatwobe.mainloop()
 
 '''sudoku'''
-sudoku = tk.Tk()
+sudoku = Toplevel()
 sudoku.title("Sudoku")
-btn = tk.Button(sudoku, text='Play Sudoku', command=sudoku.quit)
-btn.pack(pady=20)
+sudoku.geometry('500x500')
+sudokulabel = tk.Label(sudoku, text = 'Welcome to Sudoku!')
+sudokulabel.pack()
+sudokubtn = tk.Button(sudoku, text='play', command=sudoku.quit)
+sudokubtn.pack()
 
-'''sudoku'''
 # create a 9x9 grid
-sudoku.frame = Frame(sudoku, padx=10, pady=10, borderwidth=2)
+sudoku.frame = tk.Frame(sudoku, padx=10, pady=10, borderwidth=2)
 sudoku.frame.pack()
 for row in range(9):
     for col in range(9):
@@ -143,12 +166,14 @@ button10.pack()
 sudoku.mainloop()
 
 '''wordle'''
-wordle = tk.Tk()
+wordle = Toplevel()
 wordle.title("Wordle")
-btn = tk.Button(wordle, text='Play Wordle', command=wordle.quit)
-btn.pack(pady=20)
+wordle.geometry('500x500')
+wordlelabel = tk.Label(wordle, text='Welcoem to Wordle!')
+wordlelabel.pack()
+wordlebtn = tk.Button(wordle, text='play', command=wordle.quit)
+wordlebtn.pack()
 
-'''wordle game logic'''
 import random
 wordleguesses = 6
 wordlewordlist = ['apple', 'grape', 'peach', 'berry', 'mango']
@@ -178,7 +203,10 @@ while wordleguesses > 0:
     if guess == wordlechosen:
         text2.insert(tk.END, f"\nCongratulations! You've guessed the word {wordlechosen}.")
         break
-wordle_window.mainloop()
 
-menu.mainloop()
+wordle.mainloop()
+
+(tk.Tk()).mainloop()
+
+
 
